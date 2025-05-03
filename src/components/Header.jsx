@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { useLanguage } from '../context/LanguageContext';
-import '../styles/Header.css';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { useLanguage } from "../context/LanguageContext";
+import "../styles/Header.css";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +16,8 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMenu = () => {
@@ -29,13 +29,13 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`header ${isScrolled ? "scrolled" : ""}`}>
       <div className="top-bar">
-        <div className="container">
+        <div className="container-small">
           <div className="contact-info">
-            <a href={`tel:${t('phoneNumber')}`}>
+            <a href={`tel:${t("phoneNumber")}`}>
               <FontAwesomeIcon icon={faPhone} />
-              <span>{t('phoneNumber')}</span>
+              <span>{t("phoneNumber")}</span>
             </a>
           </div>
         </div>
@@ -43,52 +43,54 @@ const Header = () => {
       <div className="main-header">
         <div className="container">
           <Link to="/" className="logo" onClick={closeMenu}>
-            <span className="logo-text">{t('logoText')}</span>
+            <span className="logo-text">{t("logoText")}</span>
           </Link>
 
-          <button 
-            className={`mobile-menu-btn ${isOpen ? 'active' : ''}`} 
+          <button
+            className={`mobile-menu-btn ${isOpen ? "active" : ""}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
             <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
           </button>
 
-          <nav className={`nav-links ${isOpen ? 'active' : ''}`}>
-            <Link 
-              to="/" 
-              className={location.pathname === '/' ? 'active' : ''} 
+          <nav className={`nav-links ${isOpen ? "active" : ""}`}>
+            <Link
+              to="/"
+              className={location.pathname === "/" ? "active" : ""}
               onClick={closeMenu}
             >
-              {t('home')}
+              {t("home")}
             </Link>
-            <Link 
-              to="/gallery" 
-              className={location.pathname === '/gallery' ? 'active' : ''} 
+            <Link
+              to="/gallery"
+              className={location.pathname === "/gallery" ? "active" : ""}
               onClick={closeMenu}
             >
-              {t('gallery')}
+              {t("gallery")}
             </Link>
-            <Link 
-              to="/about" 
-              className={location.pathname === '/about' ? 'active' : ''} 
+            <Link
+              to="/about"
+              className={location.pathname === "/about" ? "active" : ""}
               onClick={closeMenu}
             >
-              {t('about')}
+              {t("about")}
             </Link>
-            <Link 
-              to="/services" 
-              className={location.pathname === '/services' ? 'active' : ''} 
+            <Link
+              to="/services"
+              className={location.pathname === "/services" ? "active" : ""}
               onClick={closeMenu}
             >
-              {t('services')}
+              {t("services")}
             </Link>
-            <Link 
-              to="/contact" 
-              className={`contact-btn ${location.pathname === '/contact' ? 'active' : ''}`} 
+            <Link
+              to="/contact"
+              className={`contact-btn ${
+                location.pathname === "/contact" ? "active" : ""
+              }`}
               onClick={closeMenu}
             >
-              {t('contact')}
+              {t("contact")}
             </Link>
           </nav>
         </div>
@@ -97,4 +99,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;

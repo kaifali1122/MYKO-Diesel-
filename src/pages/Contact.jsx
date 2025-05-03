@@ -1,76 +1,85 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faPhone, faEnvelope, faClock } from '@fortawesome/free-solid-svg-icons';
-import { useLanguage } from '../context/LanguageContext';
-import '../styles/Contact.css';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMapMarkerAlt,
+  faPhone,
+  faEnvelope,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
+import { useLanguage } from "../context/LanguageContext";
+import "../styles/Contact.css";
 
 const Contact = () => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   return (
     <div className="contact-page">
       <div className="container">
         <div className="section-title">
-          <h1>{t('contactTitle')}</h1>
-          <p>{t('contactSubtitle')}</p>
+          <h1>{t("contactTitle")}</h1>
+          <p>{t("contactSubtitle")}</p>
         </div>
 
         <div className="contact-content">
           <div className="contact-info">
             <div className="info-item">
               <FontAwesomeIcon icon={faMapMarkerAlt} className="info-icon" />
-              <h3>{t('visitUs')}</h3>
-              <p>{t('address')}</p>
+              <h3>{t("visitUs")}</h3>
+              <p>{t("address")}</p>
             </div>
 
             <div className="info-item">
               <FontAwesomeIcon icon={faPhone} className="info-icon" />
-              <h3>{t('callUs')}</h3>
-              <p><a href={`tel:${t('phoneNumber')}`}>{t('phoneNumber')}</a></p>
+              <h3>{t("callUs")}</h3>
+              <p>
+                <a href={`tel:${t("phoneNumber")}`}>{t("phoneNumber")}</a>
+              </p>
             </div>
 
             <div className="info-item">
               <FontAwesomeIcon icon={faEnvelope} className="info-icon" />
-              <h3>{t('emailUs')}</h3>
-              <p><a href={`mailto:${t('email')}`}>{t('email')}</a></p>
+              <h3>{t("emailUs")}</h3>
+              <p>
+                <a href={`mailto:${t("email")}`}>{t("email")}</a>
+              </p>
             </div>
 
             <div className="info-item">
               <FontAwesomeIcon icon={faClock} className="info-icon" />
-              <h3>{t('businessHours')}</h3>
-              <p>{t('businessHoursText')}</p>
+              <h3>{t("businessHours")}</h3>
+              <p>{t("businessHoursText")}</p>
             </div>
           </div>
 
           <div className="contact-form">
-            <h2>{t('sendMessage')}</h2>
+            <h2>{t("sendMessage")}</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
                   type="text"
                   name="name"
-                  placeholder={t('formName')}
+                  placeholder={t("formName")}
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -80,7 +89,7 @@ const Contact = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder={t('formEmail')}
+                  placeholder={t("formEmail")}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -90,7 +99,7 @@ const Contact = () => {
                 <input
                   type="tel"
                   name="phone"
-                  placeholder={t('formPhone')}
+                  placeholder={t("formPhone")}
                   value={formData.phone}
                   onChange={handleChange}
                   required
@@ -100,7 +109,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="subject"
-                  placeholder={t('formSubject')}
+                  placeholder={t("formSubject")}
                   value={formData.subject}
                   onChange={handleChange}
                   required
@@ -109,19 +118,21 @@ const Contact = () => {
               <div className="form-group">
                 <textarea
                   name="message"
-                  placeholder={t('formMessage')}
+                  placeholder={t("formMessage")}
                   value={formData.message}
                   onChange={handleChange}
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="btn">{t('formSubmit')}</button>
+              <button type="submit" className="btn">
+                {t("formSubmit")}
+              </button>
             </form>
           </div>
         </div>
 
-        <div className="map-section">
-          <h2>{t('locationMap')}</h2>
+        <div className="map-section" style={{ padding: "1rem" }}>
+          <h2>{t("locationMap")}</h2>
           <div className="map-container">
             {/* Add your Google Maps or other map component here */}
             <iframe
@@ -140,4 +151,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;
